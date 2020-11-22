@@ -1,0 +1,86 @@
+﻿@using _20201117VotingPangLong;
+@model dynamic
+@{
+    ViewBag.Title = "Student Listing";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="panel panel-inverse" data-sortable-id="table-basic-8">
+
+    <div class="panel-heading ui-sortable-handle">
+        <h4 class="panel-title">@ViewBag.Title <span class="label label-success m-l-5 t-minus-1">NEW</span></h4>
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+        </div>
+    </div>
+
+
+    <div class="panel-body">
+
+        <div class="table-responsive">
+            <table id="data-table-default" class="table table-striped table-bordered table-td-valign-middle">
+                <thead>
+                    <tr>
+                        <th class="with-checkbox">
+                                Action
+                            </th>
+                        <th>No</th>
+                        <th>Type</th>
+                        <th></th>
+                        <th>Student Name</th>
+                        <th>Student Father Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int i = 1; }
+                    @foreach (var item in Model.StudentModel)
+                    {
+
+                        <tr>
+                            <td>@(i++)</td>
+                            <td>
+                                    <div class="switcher">
+                                        <input type="checkbox" value="" id="@item.StudentId" data-val="0" onclick="Check(this)">
+                                        <label for="@item.StudentId" data-id="@item.StudentId">&nbsp;</label>
+                                    </div>
+                                </td>
+                            <td>
+                                <select class="form-control width-150">
+                                    <option>None</option>
+                                    @foreach (var type in Model.KingQueenModel)
+                                    {
+                                        <option href="#" class="dropdown-item" data-id="@type.KingQueenId">@type.KingQueenType</option>
+                                    }
+                                </select>
+                            </td>
+                            <td class="with-img" width="1%"><img src="~/Content/theme1/assets/img/user/user-1.jpg" class="img-rounded height-30"></td>
+                            <td>@item.StudentName</td>
+                            <td>@item.StudentFatherName</td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+            @*<div class="text-right">
+                <button type="button" class="btn btn-primary btn-lg" id="btnSave">Save</button>
+            </div>*@
+        </div>
+
+    </div>
+
+</div>
+<script>
+    function Check(e) {
+        if ($(e).data('val') == '0') {
+            $(e).data('val', 1);
+            alert($(e).data('val'));
+        } else {
+            $(e).data('val', 0);
+            alert($(e).data('val'));
+        }
+
+    } 
+</script>

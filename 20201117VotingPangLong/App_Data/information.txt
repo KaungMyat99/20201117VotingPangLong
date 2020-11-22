@@ -1,0 +1,10 @@
+﻿Multiple Models in Single View in MVC
+https://www.c-sharpcorner.com/UploadFile/ff2f08/multiple-models-in-single-view-in-mvc/
+
+textbox validation with jquery
+https://stackoverflow.com/questions/24429129/textbox-validation-with-jquery
+ if ($.trim($('#VoteTypeName').val()) == '') {
+             $('#VoteTypeName').css({
+                 "border": "1px solid red",
+                 "background": "#FFCECE"
+             });
